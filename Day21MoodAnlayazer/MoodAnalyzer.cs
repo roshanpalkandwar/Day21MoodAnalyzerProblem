@@ -10,6 +10,11 @@ namespace Day21MoodAnlayazer
     {
         string message;
 
+        public MoodAnalyzer()
+        {
+
+        }
+
         public MoodAnalyzer(string message)
         {
             this.message = message;
@@ -19,6 +24,11 @@ namespace Day21MoodAnlayazer
         {
             try
             {
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionType.EMPTY_MESSAGE, "Mood should not be empty");
+                }
+
                 if (this.message.Contains("Sad"))
                 {
                     return "SAD";
@@ -28,9 +38,9 @@ namespace Day21MoodAnlayazer
                     return "HAPPY";
                 }
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
-                return "HAPPY";
+                throw new MoodAnalyzerCustomException(MoodAnalyzerCustomException.ExceptionType.NULL_MESSAGE, "Mood should not be null");
             }
         }
     }

@@ -5,8 +5,9 @@ namespace Tests
     [TestClass]
     public class UnitTest1
     {
-
         Day21MoodAnlayazer.MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
+
+
         [TestMethod]
         public void GivenSadMoodShouldReturnSAD()
         {
@@ -40,7 +41,7 @@ namespace Tests
             {
                 throw new NullReferenceException();
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 //Arrange
                 string expected = "HAPPY";
@@ -80,18 +81,33 @@ namespace Tests
                 MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
                 string actual = moodAnalyzer.AnalyzeMood();
             }
-            catch(MoodAnalyzerCustomException ex)
+            catch (MoodAnalyzerCustomException ex)
             {
                 Assert.AreEqual("Mood should not be empty", ex.Message);
             }
         }
 
+        [TestMethod]
+        public void GivenMoodAnalyzeClasssNameShouldReturnMoodAnalyzeObject()
+        {
+            string message = null;
+            object expected = new MoodAnalyzer(message);
+            object obj = MoodAnalyzerFactory.CreateMoodAnalyze("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer");
+            expected.Equals(obj);
+        }
 
-        
-
-      
-        
-
+        [TestMethod]
+        public void GivenMoodAnalyzeClassNameShouldReturnObjectUsingParameterizedConstructor()
+        {
+            object expected = new MoodAnalyzer("HAPPY");
+            object obj = MoodAnalyzerFactory.CreatemoodAnalyzeUsingParameterizedConstructor("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer", "HAPPY");
+            expected.Equals(obj);
+        }
     }
+
+
+
+
 }
+
 

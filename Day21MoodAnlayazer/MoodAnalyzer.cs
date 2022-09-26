@@ -10,10 +10,17 @@ namespace Day21MoodAnlayazer
     {
         string message;
 
+        public MoodAnalyzer()
+        {
+
+        }
+
         public MoodAnalyzer(string message)
         {
             this.message = message;
         }
+
+        public object Assert { get; set; }
 
         public string AnalyzeMood()
         {
@@ -39,6 +46,7 @@ namespace Day21MoodAnlayazer
             }
         }
     }
-
-
 }
+
+
+

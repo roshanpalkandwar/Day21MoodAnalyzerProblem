@@ -5,7 +5,7 @@ namespace Tests
     [TestClass]
     public class UnitTest1
     {
-        Day21MoodAnlayazer.MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+        Day21MoodAnlayazer.MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
 
 
         [TestMethod]
@@ -15,7 +15,7 @@ namespace Tests
             string expected = "SAD";
 
             //Act
-            string actual = moodAnalyzer.AnalyzeMood("I am in Sad Mood");
+            string actual = moodAnalyzer.AnalyzeMood();
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -28,13 +28,32 @@ namespace Tests
             string expected = "HAPPY";
 
             //Act
-            string actual = moodAnalyzer.AnalyzeMood("I am in Any Mood");
+            string actual = moodAnalyzer.AnalyzeMood();
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void GivenNullShouldReturnHappy()
+        {
+            try
+            {
+                throw new NullReferenceException();
+            }
+            catch (NullReferenceException ex)
+            {
+                //Arrange
+                string expected = "HAPPY";
+
+                //Act
+                string actual = moodAnalyzer.AnalyzeMood();
+
+                //Assert
+                Assert.AreEqual(expected, actual);
+
+            }
+        }
+
     }
-
-
 }
 

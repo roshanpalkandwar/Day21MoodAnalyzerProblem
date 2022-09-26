@@ -2,6 +2,9 @@
 {
     public class Program
     {
+        string message;
+
+        
 
         public static void Main(string[] args)
         {

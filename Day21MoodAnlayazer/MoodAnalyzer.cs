@@ -20,8 +20,6 @@ namespace Day21MoodAnlayazer
             this.message = message;
         }
 
-        public object Assert { get; set; }
-
         public string AnalyzeMood()
         {
             try
@@ -47,6 +45,12 @@ namespace Day21MoodAnlayazer
         }
     }
 }
+    
+
+        
+
+                
+
 
 
 

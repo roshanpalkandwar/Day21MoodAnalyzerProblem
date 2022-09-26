@@ -6,8 +6,6 @@ namespace Tests
     public class UnitTest1
     {
         Day21MoodAnlayazer.MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
-
-
         [TestMethod]
         public void GivenSadMoodShouldReturnSAD()
         {
@@ -103,6 +101,16 @@ namespace Tests
             object obj = MoodAnalyzerFactory.CreatemoodAnalyzeUsingParameterizedConstructor("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer", "HAPPY");
             expected.Equals(obj);
         }
+
+        [TestMethod]
+        public void GivenHappyMoodShouldReturnHappy()
+        {
+            string expected = "HAPPY";
+            string actual = MoodAnalyzerFactory.InvokeAnalyzeMood("HAPPY", "AnalyzeMood");
+            Assert.AreEqual(expected, actual);
+        }
+
+
     }
 
 

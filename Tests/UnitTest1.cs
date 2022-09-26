@@ -5,9 +5,8 @@ namespace Tests
     [TestClass]
     public class UnitTest1
     {
-        Day21MoodAnlayazer.MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in Any Mood");
 
-
+        Day21MoodAnlayazer.MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
         [TestMethod]
         public void GivenSadMoodShouldReturnSAD()
         {
@@ -33,8 +32,66 @@ namespace Tests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void GivenNullShouldReturnHappy()
+        {
+            try
+            {
+                throw new NullReferenceException();
+            }
+            catch(NullReferenceException ex)
+            {
+                //Arrange
+                string expected = "HAPPY";
+
+                //Act
+                string actual = moodAnalyzer.AnalyzeMood();
+
+                //Assert
+                Assert.AreEqual(expected, actual);
+
+            }
+        }
+
+        //Test Case 3.1
+        [TestMethod]
+        public void GivenNullMoodShouldThrowMoodAnalysisException()
+        {
+            try
+            {
+                string message = null;
+                MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+                string actual = moodAnalyzer.AnalyzeMood();
+            }
+            catch (MoodAnalyzerCustomException ex)
+            {
+                Assert.AreEqual("Mood should not be null", ex.Message);
+            }
+        }
+
+        //Test Case 3.2
+        [TestMethod]
+        public void GivenEmptyMoodShouldThrowMoodAnalysisException()
+        {
+            try
+            {
+                string message = "";
+                MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
+                string actual = moodAnalyzer.AnalyzeMood();
+            }
+            catch(MoodAnalyzerCustomException ex)
+            {
+                Assert.AreEqual("Mood should not be empty", ex.Message);
+            }
+        }
+
+
+        
+
+      
+        
+
     }
-
-
 }
 
